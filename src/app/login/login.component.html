@@ -1,5 +1,12 @@
 <mat-card class="mat-elevation-z24">
+
+  <mat-card-header class="mat-elevation-z2">
+    <span>Evaluation CRUD</span>
+  </mat-card-header>
+  
   <mat-card-content>
+
+    <div class="profile-picture"></div>
 
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
 
@@ -11,8 +18,16 @@
         <input matInput type="password" placeholder="Password" formControlName="password" autocomplete="off">
       </mat-form-field>
 
-      <button mat-raised-button type="submit">Entrar</button>
+      <span class="login-error-message" *ngIf="authService.notification">
+        Incorrect email or password!
+      </span>
+
+      <button mat-raised-button color="primary" type="submit">Entrar</button>
     </form>
 
   </mat-card-content>
 </mat-card>
+
+<section class="brand-footer">
+  <span>Desenvolvido por Eduardo Sotero</span>
+</section>

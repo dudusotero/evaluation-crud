@@ -10,6 +10,7 @@ export class AuthService {
 
   API_URL = 'http://localhost:3000';
   TOKEN_KEY = 'token';
+  notification: string;
 
   constructor(private http: HttpClient, private router: Router) { }
 
@@ -35,8 +36,10 @@ export class AuthService {
   }
 
   login(user: ILogin) {
-    this.http.post(this.API_URL + '/login', user).subscribe((res: any) => {
+    return this.http.post(this.API_URL + '/login', user).subscribe((res: any) => {
       this.router.navigateByUrl('/');
+    }, (res: any) => {
+      this.notification = res.message;
     });
   }
 }
