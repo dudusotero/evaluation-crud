@@ -13,7 +13,7 @@ export class AuthInterceptor implements HttpInterceptor {
 
   trataResponse(event) {
     if (event.status === 200) {
-      this.authService.setToken(event.headers.get('Authorization'));
+      this.authService.setToken(event.body.access_token);
     } else if (event.status === 401) {
       this.authService.logout();
     }
@@ -23,7 +23,7 @@ export class AuthInterceptor implements HttpInterceptor {
 
     req = req.clone({
       setHeaders: {
-        'Authorization': this.authService.token || ''
+        'Authorization': 'Bearer ' + this.authService.token || ''
       }
     });
 

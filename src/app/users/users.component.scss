@@ -1,0 +1,20 @@
+.search-field {
+    margin: 8px 16px 0 16px;
+    mat-form-field {
+        display: block;
+        width: 100%;
+    }
+}
+
+mat-card {
+    margin: 8px;
+    mat-card-footer {
+        padding: 24px;
+    }
+}
+
+.mat-column-actions {
+    display: grid;
+    justify-content: right;
+    grid-template-columns: auto auto;
+}

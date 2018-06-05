@@ -1,1 +1,49 @@
-<h1>Users</h1>
+<div class="search-field">
+  <mat-form-field>
+    <input matInput (keyup)="filterInList($event.target.value)" placeholder="Filter">
+  </mat-form-field>
+</div>
+
+<mat-card class="mat-elevation-z6">
+
+  <mat-card-content>
+
+    <mat-table [dataSource]="dataSource" matSort>
+
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="email">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Email </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.email}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef class="actions-column"></mat-header-cell>
+        <mat-cell *matCellDef="let row" class="actions-column">
+          <button mat-icon-button matTooltip="Edit" (click)="editUser(row.id)">
+            <mat-icon aria-label="Edit">edit</mat-icon>
+          </button>
+          <button mat-icon-button matTooltip="Delete" (click)="deleteUser(row.id)">
+            <mat-icon aria-label="Delete">delete</mat-icon>
+          </button>
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+
+  </mat-card-content>
+
+  <mat-divider></mat-divider>
+
+  <mat-card-footer>
+    <button mat-fab matTooltip="New user" matTooltipPosition="after" color="primary" (click)="newUser()"><mat-icon>add</mat-icon></button>
+  </mat-card-footer>
+
+</mat-card>

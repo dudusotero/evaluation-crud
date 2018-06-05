@@ -1,13 +1,13 @@
 <mat-drawer-container>
   <mat-drawer #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [opened]="!mobileQuery.matches">
     <div class="sidenav-header">
-      <span>SideNav</span>
+      <span>E</span>
     </div>
     <ul>
-      <li>
-        <mat-icon>home</mat-icon>
+      <li matTooltip="Users" matTooltipPosition="after" routerLinkActive="active" routerLink="/app/users">
+        <mat-icon>person</mat-icon>
       </li>
-      <li>
+      <li (click)="onLogout()" matTooltip="Logout" matTooltipPosition="after">
         <mat-icon>exit_to_app</mat-icon>
       </li>
     </ul>
