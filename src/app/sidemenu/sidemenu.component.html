@@ -1,0 +1,23 @@
+<mat-drawer-container>
+  <mat-drawer #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [opened]="!mobileQuery.matches">
+    <div class="sidenav-header">
+      <span>SideNav</span>
+    </div>
+    <ul>
+      <li>
+        <mat-icon>home</mat-icon>
+      </li>
+      <li>
+        <mat-icon>exit_to_app</mat-icon>
+      </li>
+    </ul>
+  </mat-drawer>
+  <mat-drawer-content>
+    <mat-toolbar>
+      <button mat-icon-button (click)="snav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+  </mat-drawer-content>
+</mat-drawer-container>
