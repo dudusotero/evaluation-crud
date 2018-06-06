@@ -40,9 +40,9 @@
 
   </mat-card-content>
 
-  <mat-divider></mat-divider>
+  <mat-divider *ngIf="isAdmin()"></mat-divider>
 
-  <mat-card-footer>
+  <mat-card-footer *ngIf="isAdmin()">
     <button mat-fab matTooltip="New user" matTooltipPosition="after" color="primary" (click)="newUser()"><mat-icon>add</mat-icon></button>
   </mat-card-footer>
 

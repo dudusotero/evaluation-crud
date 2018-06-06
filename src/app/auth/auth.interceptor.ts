@@ -12,8 +12,8 @@ export class AuthInterceptor implements HttpInterceptor {
   constructor(private authService: AuthService) { }
 
   trataResponse(event) {
-    if (event.status === 200) {
-      this.authService.setToken(event.body.access_token);
+    if (event.status === 202) {
+      this.authService.setStorageVariables(event.body);
     } else if (event.status === 401) {
       this.authService.logout();
     }

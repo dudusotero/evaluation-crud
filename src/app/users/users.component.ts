@@ -14,16 +14,24 @@ export class UsersComponent implements AfterViewInit {
 
   users: Array<IUsers> = [];
 
-  displayedColumns: Array<string> = ['name', 'email', 'actions'];
+  displayedColumns: Array<string> = ['name', 'email'];
   dataSource: MatTableDataSource<IUsers>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private service: UsersService, private router: Router) { }
+  constructor(private service: UsersService, private router: Router) {
+    if (this.isAdmin()) {
+      this.displayedColumns.push('actions');
+    }
+  }
 
   ngAfterViewInit() {
     this.listAll();
+  }
+
+  isAdmin() {
+    return localStorage.getItem('user_role') === 'ADMIN';
   }
 
   listAll() {

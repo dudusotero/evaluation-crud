@@ -38,7 +38,6 @@ export class DetailComponent {
     this.route.params.subscribe(params => {
       if (Object.keys(params).length > 0) {
         this.service.getById(params.id).subscribe((res: any) => {
-          console.log(res.data);
           this.isEdit = true;
           Object.keys(res.data).forEach((i) => {
             if (i !== 'id' && this.form.controls[i]) {
