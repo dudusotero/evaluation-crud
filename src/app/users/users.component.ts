@@ -1,5 +1,5 @@
 import { AuthService } from './../auth/auth.service';
-import { IUsers } from './../interfaces/users.interface';
+import { IUsers } from './../shared/interfaces/users.interface';
 import { Component, ViewChild, AfterViewInit } from '@angular/core';
 import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 import { Router } from '@angular/router';

@@ -1,4 +1,4 @@
-import { ILogin } from './../interfaces/login.interface';
+import { ILogin } from './../shared/interfaces/login.interface';
 import { Injectable } from '@angular/core';
 import { RequestOptions, Response } from '@angular/http';
 

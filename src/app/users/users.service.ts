@@ -1,5 +1,5 @@
-import { IService } from './../interfaces/service.interface';
-import { IUsers } from './../interfaces/users.interface';
+import { IService } from './../shared/interfaces/service.interface';
+import { IUsers } from './../shared/interfaces/users.interface';
 import { AuthService } from './../auth/auth.service';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
