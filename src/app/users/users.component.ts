@@ -1,7 +1,7 @@
 import { AuthService } from './../auth/auth.service';
 import { IUsers } from './../shared/interfaces/users.interface';
 import { Component, ViewChild, AfterViewInit } from '@angular/core';
-import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
+import { MatPaginator, MatSort, MatTableDataSource, MatSnackBar } from '@angular/material';
 import { Router } from '@angular/router';
 import { UsersService } from './users.service';
 
@@ -20,10 +20,16 @@ export class UsersComponent implements AfterViewInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private service: UsersService, private router: Router) {
+  constructor(public snackBar: MatSnackBar, private service: UsersService, private router: Router) {
     if (this.isAdmin()) {
       this.displayedColumns.push('actions');
     }
+  }
+
+  openSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action, {
+      duration: 2000
+    });
   }
 
   ngAfterViewInit() {
@@ -55,6 +61,7 @@ export class UsersComponent implements AfterViewInit {
     this.service.delete(id).subscribe(() => {
       this.removeByAttr(this.users, 'id', id);
       this.dataSource = new MatTableDataSource(this.users);
+      this.openSnackBar('Deleted', '');
     });
   }
 
