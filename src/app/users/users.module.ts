@@ -6,6 +6,7 @@ import { UsersComponent } from './users.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UsersRoutes } from './users.routing';
 import { MaterialModule } from '../core/material.module';
+import { RoleGuard } from '../auth/role.guard';
 
 @NgModule({
   imports: [
@@ -15,7 +16,10 @@ import { MaterialModule } from '../core/material.module';
     ReactiveFormsModule,
     RouterModule.forChild(UsersRoutes)
   ],
-  declarations: [UsersComponent, DetailComponent]
+  declarations: [UsersComponent, DetailComponent],
+  providers: [
+    RoleGuard
+  ]
 })
 
 export class UsersModule { }
