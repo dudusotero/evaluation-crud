@@ -1,0 +1,23 @@
+mat-card {
+    margin: 8px;
+    form {
+        mat-card-content {
+            display: grid;
+            grid-template-columns: auto auto;
+            grid-column-gap: 24px;
+        }
+    }
+    mat-card-footer {
+        padding: 24px;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    mat-card {
+        form {
+            mat-card-content {
+                grid-template-columns: auto;
+            }
+        }
+    }
+}
